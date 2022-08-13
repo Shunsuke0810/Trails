@@ -12,7 +12,7 @@
 
 ## カリキュラム外の技術
 ---
-- gem rails_admin,gem cancancanを使った管理者機能
+- gem ransacを使用したラベル検索機能
 
 ## 実行手順
 ---
