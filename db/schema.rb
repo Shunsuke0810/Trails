@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_15_082004) do
+ActiveRecord::Schema.define(version: 2022_08_15_085529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 2022_08_15_082004) do
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "unit_id", null: false
+    t.index ["unit_id"], name: "index_users_on_unit_id"
   end
 
+  add_foreign_key "users", "units"
 end
