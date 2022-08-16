@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_15_233200) do
+ActiveRecord::Schema.define(version: 2022_08_16_020612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "labellings", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_labellings_on_label_id"
+    t.index ["post_id"], name: "index_labellings_on_post_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.datetime "ocurence"
@@ -44,6 +59,8 @@ ActiveRecord::Schema.define(version: 2022_08_15_233200) do
     t.index ["unit_id"], name: "index_users_on_unit_id"
   end
 
+  add_foreign_key "labellings", "labels"
+  add_foreign_key "labellings", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "users", "units"
 end
