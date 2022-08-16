@@ -22,6 +22,11 @@
         <td><%= post.location %></td>
         <td><%= post.train_code %></td>
         <td><%= post.user.name %></td>
+        <td>
+          <% post.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
