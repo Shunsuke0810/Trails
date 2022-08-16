@@ -21,6 +21,9 @@
   <%= f.label :position %>
   <%= f.text_field :position %>
 
+  <%= f.label :unit %>
+  <%=f.collection_select :unit_id, @unit.all, :id, :name, include_blank: "選択して下さい" %>
+
   <%= f.label :password %>
   <%= f.password_field :password %>
 

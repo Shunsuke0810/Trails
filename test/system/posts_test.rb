@@ -15,7 +15,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "New Post"
 
     fill_in "Content", with: @post.content
-    fill_in "Datetime", with: @post.datetime
     fill_in "Location", with: @post.location
     fill_in "Ocurence", with: @post.ocurence
     fill_in "Train code", with: @post.train_code
@@ -30,7 +29,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Content", with: @post.content
-    fill_in "Datetime", with: @post.datetime
     fill_in "Location", with: @post.location
     fill_in "Ocurence", with: @post.ocurence
     fill_in "Train code", with: @post.train_code

@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Datetime:</strong>
-  <%= @post.datetime %>
-</p>
-
-<p>
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
@@ -23,6 +18,11 @@
 <p>
   <strong>Train code:</strong>
   <%= @post.train_code %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
