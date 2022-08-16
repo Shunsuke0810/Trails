@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
   belongs_to :unit
   has_many :posts
+  has_many :book_marks, dependent: :destroy
 end
