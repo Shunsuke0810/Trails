@@ -25,5 +25,13 @@
   <%= @post.user.name %>
 </p>
 
+<% unless @post.user_id == current_user.id %>
+  <% if @book_mark.present? %>
+    <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'ブックマークする', book_marks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
