@@ -13,12 +13,7 @@
 
   <div class="field">
     <%= form.label :ocurence %>
-    <%= form.text_field :ocurence %>
-  </div>
-
-  <div class="field">
-    <%= form.label :datetime %>
-    <%= form.text_field :datetime %>
+    <%= form.datetime_field :ocurence %>
   </div>
 
   <div class="field">
@@ -35,6 +30,12 @@
     <%= form.label :train_code %>
     <%= form.text_field :train_code %>
   </div>
+
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>
