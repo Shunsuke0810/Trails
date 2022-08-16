@@ -4,4 +4,5 @@ class Post < ApplicationRecord
   has_many :labels, through: :labellings
   has_many :book_marks, dependent: :destroy
   has_many :book_mark_users, through: :book_marks, source: :user
+  has_many :comments, dependent: :destroy
 end
