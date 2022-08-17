@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @book_mark = current_user.book_marks.find_by(post_id: @post.id)
+    @comments = @post.comments
+    @comment = @post.comments.build
   end
 
   # GET /posts/new

@@ -8,4 +8,5 @@ class User < ApplicationRecord
   belongs_to :unit
   has_many :posts
   has_many :book_marks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
