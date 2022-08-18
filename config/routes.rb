@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get "/admin", to: "application#check"
+  mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
   resources :labels
   resources :posts do
     resources :comments
