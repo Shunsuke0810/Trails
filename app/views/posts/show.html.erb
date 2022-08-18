@@ -25,6 +25,37 @@
   <%= @post.user.name %>
 </p>
 
+<div id='map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 100%;
+}
+</style>
+
+<!-- js部分 -->
+<script>
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+    zoom: 15,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+    map: map
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
+
 <% unless @post.user_id == current_user.id %>
   <% if @book_mark.present? %>
     <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
