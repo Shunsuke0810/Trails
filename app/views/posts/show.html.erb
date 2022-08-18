@@ -25,21 +25,6 @@
   <%= @post.user.name %>
 </p>
 
-<div class="container">
-  <p id="notice"><%= notice %></p>
-
-  <p>コメント一覧</p>
-
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-  </div>
-
-  <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-
-  <%= link_to '編集', edit_post_path(@post) %> |
-  <%= link_to '戻る', posts_path %>
-</div>
-
 <% unless @post.user_id == current_user.id %>
   <% if @book_mark.present? %>
     <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
