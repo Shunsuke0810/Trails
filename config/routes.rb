@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'homes#index'
   get "/admin", to: "application#check"
   mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
   resources :labels
