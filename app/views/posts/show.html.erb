@@ -25,20 +25,36 @@
   <%= @post.user.name %>
 </p>
 
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<div id='map'></div>
 
-  <p>コメント一覧</p>
+<style>
+#map {
+  height: 600px;
+  width: 100%;
+}
+</style>
 
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-  </div>
+<!-- js部分 -->
+<script>
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
 
-  <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+  map = new google.maps.Map(document.getElementById('map'), {
+    center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+    zoom: 15,
+  });
 
-  <%= link_to '編集', edit_post_path(@post) %> |
-  <%= link_to '戻る', posts_path %>
-</div>
+  marker = new google.maps.Marker({
+    position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+    map: map
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
 
 <% unless @post.user_id == current_user.id %>
   <% if @book_mark.present? %>
