@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :set_unit, only: %i[ create new ]
+  
 
 
   def new
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = Post.all.order(ocurence: "ASC")
   end
   
   private
