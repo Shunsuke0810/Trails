@@ -36,22 +36,10 @@
     <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
   </div>
 
-    <div class="field">
-    <%= form.label :lat %>
-    <%= form.text_field :lat,:value =>"緯度", id: :lat %>
-  </div>
-
-    <div class="field">
-    <%= form.label :lang %>
-    <%= form.text_field :lng,:value =>"経度", id: :lng %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-
-<h2>Map</h2>
 
 <input id="address" type="textbox" value="">
 <input type="button" value="検索" onclick="codeAddress()">
