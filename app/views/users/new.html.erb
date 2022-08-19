@@ -24,6 +24,8 @@
   <%= f.label :unit %>
   <%=f.collection_select :unit_id, @unit.all, :id, :name, include_blank: "選択して下さい" %>
 
+<%= link_to "所属部署を新規作成する場合コチラ", new_unit_path %>
+
   <%= f.label :password %>
   <%= f.password_field :password %>
 
@@ -32,3 +34,4 @@
 
   <%= f.submit "Create my account" %>
 <% end %>
+
