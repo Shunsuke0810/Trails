@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = Post.all.order(ocurence: "ASC")
+    @posts = Post.where(user_id: User.where(unit_id: @user.unit.id).ids).order(ocurence: "ASC")
   end
   
   private
