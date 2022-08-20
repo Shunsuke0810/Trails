@@ -1,18 +1,6 @@
-<h1><%= @user.name %>のページ</h1>
+<p id="notice"><%= notice %></p>
 
-<p>メールアドレス: <%= @user.email %></p>
-<p>役職: <%= @user.position %></p>
-<p>所属部署: <%= @user.unit.name %></p>
-
-<%= link_to "新規投稿", new_post_path %>
-
-<%= link_to "全てのユーザーの投稿一覧", posts_path %>
-
-<%= link_to "#{current_user.name}の投稿一覧", my_posts_path %>
-
-<%= link_to "ブックマーク&コメント一覧", markings_path %>
-
-<h1><%= @user.unit.name %>の投稿一覧</h1>
+<h1>ブックマーク&コメントした投稿一覧</h1>
 
 <table>
   <thead>
@@ -22,7 +10,7 @@
       <th>Location</th>
       <th>Train code</th>
       <th>user</th>
-      <th>label</th>
+      <th>Label</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -41,7 +29,13 @@
           <% end %>
         </td>
         <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to '戻る', user_path(current_user.id) %>

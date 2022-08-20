@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     @posts = Post.where(user_id: current_user.id)
   end
 
+  def marking
+    posts_ids = current_user.posts.pluck(:id)
+    @posts = Post.where(id: [].concat(current_user.book_marks.pluck(:post_id), current_user.comments.pluck(:post_id), Comment.where(post_id: posts_ids).pluck(:post_id)))
+  end
+
   # GET /posts/1 or /posts/1.json
   def show
     @book_mark = current_user.book_marks.find_by(post_id: @post.id)
