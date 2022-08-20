@@ -25,6 +25,8 @@
   <%= @post.user.name %>
 </p>
 
+<% if @post.lng.present? %>
+
 <div id='map'></div>
 
 <style>
@@ -55,6 +57,9 @@ function initMap(){
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
+
+<% else %>
+<% end %>
 
 <% unless @post.user_id == current_user.id %>
   <% if @book_mark.present? %>
