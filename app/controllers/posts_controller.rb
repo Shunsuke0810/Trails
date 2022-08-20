@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def my_index
+    @posts = Post.where(user_id: current_user.id)
   end
 
   # GET /posts/1 or /posts/1.json
