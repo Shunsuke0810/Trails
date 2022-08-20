@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  get '/my_posts', to: 'posts#my_index'
   resources :units
   resources :book_marks, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]

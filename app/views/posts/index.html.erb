@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>全ての投稿</h1>
 
 <table>
   <thead>
@@ -10,6 +10,7 @@
       <th>Location</th>
       <th>Train code</th>
       <th>user</th>
+      <th>Label</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to '戻る', user_path(current_user.id) %>
