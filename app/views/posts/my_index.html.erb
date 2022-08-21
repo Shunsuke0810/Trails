@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>全ての投稿</h1>
+<h1><%= current_user.name %>の投稿一覧</h1>
 
 <table>
   <thead>
@@ -29,6 +29,8 @@
           <% end %>
         </td>
         <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,6 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: %i[ show edit update destroy ]
+  skip_before_action :login_required, only: [:new, :create]
 
   # GET /units or /units.json
   def index
@@ -25,7 +26,7 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to unit_url(@unit), notice: "Unit was successfully created." }
+        format.html { redirect_to new_user_path, notice: "部署[#{@unit.name}]が追加されました" }
         format.json { render :show, status: :created, location: @unit }
       else
         format.html { render :new, status: :unprocessable_entity }
