@@ -15,7 +15,9 @@
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
 
-  <% if current_user.admin? %>
+<%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-success' %>
+
+  <% if current_user.present? && current_user.admin? %>
     <%= link_to "admin", rails_admin_path %>
   <% else %>
   <% end %>

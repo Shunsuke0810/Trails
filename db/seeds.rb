@@ -191,6 +191,18 @@ User.create(
       created_at: "2022-07-16",
       updated_at: "2022-07-16",
       unit_id:5
+    },
+    {
+      id:14,
+      name: "テストユーザー",
+      email: "test@example.com",
+      password: "aaaaaa",
+      password_confirmation: "aaaaaa",
+      position: "運転士",
+      admin: false,
+      created_at: "2022-07-16",
+      updated_at: "2022-07-16",
+      unit_id:1
     }
   ]
 )
