@@ -194,12 +194,24 @@ User.create(
     },
     {
       id:14,
-      name: "テストユーザー",
+      name: "テストユーザー(一般)",
       email: "test@example.com",
       password: "aaaaaa",
       password_confirmation: "aaaaaa",
       position: "運転士",
       admin: false,
+      created_at: "2022-07-16",
+      updated_at: "2022-07-16",
+      unit_id:1
+    },
+    {
+      id:15,
+      name: "テストユーザー(管理者)",
+      email: "test_admin@example.com",
+      password: "aaaaaa",
+      password_confirmation: "aaaaaa",
+      position: "管理者",
+      admin: true,
       created_at: "2022-07-16",
       updated_at: "2022-07-16",
       unit_id:1

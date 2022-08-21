@@ -24,7 +24,8 @@
     <%= link_to "ユーザートップページ", user_path(current_user.id) %>
     <%= link_to "Logout", session_path(current_user.id), method: :delete %>
   <% else %>
-    <%= link_to 'ゲストユーザーログイン', guest_path, method: :post, class: 'btn btn-success' %>
+    <%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post, class: 'btn btn-success' %>
+    <%= link_to 'ゲストユーザー(一般)', guest_path, method: :post, class: 'btn btn-success' %>
     <%= link_to "Sign up", new_user_path %>
     <%= link_to "Login", new_session_path %>
   <% end %>
