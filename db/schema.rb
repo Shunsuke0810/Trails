@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_18_022431) do
+ActiveRecord::Schema.define(version: 2022_08_22_052906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_08_18_022431) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id", null: false
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -44,14 +44,14 @@ ActiveRecord::Schema.define(version: 2022_08_18_022431) do
   end
 
   create_table "labels", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.datetime "ocurence"
-    t.string "content"
+    t.datetime "ocurence", null: false
+    t.string "content", null: false
     t.string "location"
     t.string "train_code"
     t.datetime "created_at", precision: 6, null: false
@@ -63,16 +63,16 @@ ActiveRecord::Schema.define(version: 2022_08_18_022431) do
   end
 
   create_table "units", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "position"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.string "position", null: false
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
