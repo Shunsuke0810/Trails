@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   post '/guest', to: 'guest_sessions#create_general'
   post '/guest_admin', to: 'guest_sessions#create_admin'
-  get "/admin", to: "application#check"
-  mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :labels
   resources :posts do
     resources :comments

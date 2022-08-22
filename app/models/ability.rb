@@ -1,15 +1,13 @@
-# frozen_string_literal: true
+# class Ability
+#   include CanCan::Ability
 
-class Ability
-  include CanCan::Ability
-
-  def initialize(user)
-    include CanCan::Ability
-    def initialize(user)
-      if user.try(:admin?)
-        can :access, :rails_admin
-        can :manage, :all
-      end
-    end
-  end
-end
+#   def initialize(user)
+#     # ログインしているかつadminカラムがtrueの場合
+#     if user && user.admin?
+#       # rails_adminへのアクセスを許可
+#       can :access, :rails_admin
+#       # 全ての機能を使えるように設定
+#       can :manage, :all
+#     end
+#   end
+# end
