@@ -11,6 +11,10 @@
 
   <body>
 
+<header>
+
+<h1>Trails</h1>
+
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
@@ -29,9 +33,17 @@
     <%= link_to "Sign up", new_user_path %>
     <%= link_to "Login", new_session_path %>
   <% end %>
+  
+  </header>
 
     <%= yield %>
   
+  <footer>
+
+  <p>フッター</p>
+
+  </footer>
+
   </body>
 
 </html>
