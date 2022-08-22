@@ -60,3 +60,5 @@ gem 'pry-rails'
 gem 'dotenv-rails'
 
 gem 'rails_admin', '~> 3.0'
+
+gem 'cancan'
