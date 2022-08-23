@@ -12,32 +12,33 @@
   <body>
 
 <header>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+  <h1>Trails</h1>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
 
-<h1>Trails</h1>
+    <% if current_user.present? && current_user.admin? %>
+      <%= link_to "admin", rails_admin_path %>
+    <% else %>
+    <% end %>
 
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
-
-  <% if current_user.present? && current_user.admin? %>
-    <%= link_to "admin", rails_admin_path %>
-  <% else %>
-  <% end %>
-
-  <% if logged_in? %>
-    <%= link_to "ユーザートップページ", user_path(current_user.id) %>
-    <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-  <% else %>
-    <%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post, class: 'btn btn-success' %>
-    <%= link_to 'ゲストユーザー(一般)', guest_path, method: :post, class: 'btn btn-success' %>
-    <%= link_to "Sign up", new_user_path %>
-    <%= link_to "Login", new_session_path %>
-  <% end %>
-  
+    <% if logged_in? %>
+      <%= link_to "ユーザートップページ", user_path(current_user.id) %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post, class: 'btn btn-success' %>
+      <%= link_to 'ゲストユーザー(一般)', guest_path, method: :post, class: 'btn btn-success' %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+  </nav>
   </header>
 
+  <div class="container">
     <%= yield %>
-  
+  </div>
+
   <footer>
 
   <p>フッター</p>
