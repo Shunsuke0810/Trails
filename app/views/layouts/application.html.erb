@@ -12,11 +12,11 @@
   <body>
 
 <header>
+
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
   <h1>Trails</h1>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+
+    <p id="notice"><%= notice %></p>
 
     <% if current_user.present? && current_user.admin? %>
       <%= link_to "admin", rails_admin_path %>
@@ -33,6 +33,7 @@
       <%= link_to "Login", new_session_path %>
     <% end %>
   </nav>
+
   </header>
 
   <div class="container">

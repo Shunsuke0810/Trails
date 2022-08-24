@@ -28,7 +28,7 @@
             <%= label.name %>
           <% end %>
         </td>
-        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Show', post, data: {"turbolinks" => false} %></td>
       </tr>
     <% end %>
   </tbody>
