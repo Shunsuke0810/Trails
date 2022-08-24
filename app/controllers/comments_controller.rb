@@ -7,9 +7,13 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
+        flash.now[:notice] = 'コメントが投稿されました'
+        format.html { render :index }
         format.js { render :index }
       else
-        format.html { redirect_to post_path(@post), notice: '投稿できませんでした...' }
+        format.html { render :index }
+        flash.now[:notice] = '投稿できませんでした...'
+        format.js { render :index }
       end
     end
   end

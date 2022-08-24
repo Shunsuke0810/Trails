@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
-  before_action :set_unit, only: %i[ create new ]
+  before_action :set_unit, only: %i[ create new  edit update]
+  before_action :set_user, only: %i[ create show edit update destroy ]
   
+def edit
+end
 
+def update
+  if @user.update(user_params)
+    redirect_to user_path(@user.id), notice: "ユーザー情報が編集されました"
+  else
+    render :edit
+  end
+end
 
   def new
     @user = User.new
@@ -31,6 +41,10 @@ class UsersController < ApplicationController
 
   def set_unit
     @unit = Unit.all
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   
