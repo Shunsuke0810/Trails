@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.bg-dark {
+  background-color: #c65d4f !important;
+}
+
