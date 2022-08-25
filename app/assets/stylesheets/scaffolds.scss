@@ -21,7 +21,7 @@ a:visited {
 
 a:hover {
   color: #fff;
-  background-color: #000; }
+  background-color: rgb(196, 189, 189); }
 
 th {
   padding-bottom: 5px; }
@@ -34,7 +34,8 @@ div.actions {
   margin-bottom: 10px; }
 
 #notice {
-  color: green; }
+  color: rgb(13, 0, 128);
+  font-size: 20px;}
 
 .field_with_errors {
   padding: 2px;
