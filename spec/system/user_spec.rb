@@ -39,5 +39,11 @@ RSpec.describe 'ユーザーモデル機能', type: :system do
         expect(page).to have_content 'ログアウトしました'
       end
     end
+    context 'ログインせずに投稿画面のパスを入力' do
+      it 'ログイン画面に遷移' do
+        visit new_post_path
+        expect(page).to have_content 'Login'
+      end
+    end
   end
 end
