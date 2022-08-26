@@ -24,6 +24,12 @@
   <%= @post.user.name %>
 </p>
 
+<p>
+  <strong>label:</strong>
+  <%= @post.labels.pluck(:name) %>
+</p>
+
+
 <% if @post.lng.present? %>
 
 <div id='map'></div>

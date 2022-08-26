@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :set_unit, only: %i[ create new  edit update]
-  before_action :set_user, only: %i[ create show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy ]
   
 def edit
 end
@@ -21,6 +21,7 @@ end
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
       render :new
