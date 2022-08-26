@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :post, :class => 'post' do
+    id {1}
     ocurence { Date.today }
     content { 'test_content' }
     location { 'test_location' }

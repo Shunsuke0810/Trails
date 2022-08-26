@@ -30,14 +30,36 @@ RSpec.describe '投稿機能', type: :system do
         expect(page).to have_content 'Label_A'
       end
     end
-    # context '既存の投稿を編集する' do
-    #   it '編集内容が正しく反映される' do
-    #     FactoryBot.create(:post)
-    #     visit edit_post_path()
-    #     fill_in 'post[content]', with: 'test_content_edited'
-    #     click_button 'commit'
-    #     expect(page).to have_content 'test_content_edited'
-    #   end
-    # end
+    context '投稿された内容の確認' do
+      it '投稿された内容が正しく反映されている' do
+        FactoryBot.create(:post)
+        visit post_path(1)
+        expect(page).to have_content 'test_content'
+      end
+    end
+    context '既存の投稿を編集する' do
+      it '編集内容が正しく反映される' do
+        FactoryBot.create(:post)
+        visit edit_post_path(1)
+        fill_in 'post[content]', with: 'test_content_edited'
+        click_button 'commit'
+        expect(page).to have_content 'test_content_edited'
+      end
+    end
+    context '投稿を削除を実行する' do
+      it '削除が実行される' do
+        visit new_post_path
+        fill_in 'post[ocurence]', with: '002022-08-25-16:30'
+        fill_in 'post[content]', with: 'test_content'
+        fill_in 'post[location]', with: 'test_location'
+        fill_in 'post[train_code]', with: 'test_train_code'
+        check 'Label_A'
+        click_button 'commit'
+        visit my_posts_path
+        click_link "Destroy"
+        page.accept_confirm "Are you sure?"
+        expect(page).to have_content 'Post was successfully destroyed.'
+      end
+    end
   end
 end

@@ -7,5 +7,6 @@ FactoryBot.define do
     admin {'false'}
     position { 'driver' }
     unit_id { 1 }
+    association :post
   end
 end
