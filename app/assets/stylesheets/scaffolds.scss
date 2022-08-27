@@ -17,11 +17,11 @@ a {
   color: #000; }
 
 a:visited {
-  color: #666; }
+  color: black; }
 
 a:hover {
   color: #fff;
-  background-color: rgb(196, 189, 189); }
+  background-color: rgb(245, 243, 243); }
 
 th {
   padding-bottom: 5px; }
@@ -34,8 +34,7 @@ div.actions {
   margin-bottom: 10px; }
 
 #notice {
-  color: rgb(13, 0, 128);
-  font-size: 20px;}
+  color: green; }
 
 .field_with_errors {
   padding: 2px;
