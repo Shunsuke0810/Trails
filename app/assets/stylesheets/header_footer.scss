@@ -2,16 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.top_background {
-  background-image: url("/images/SL.jpeg");
-  background-size: cover;
-  height: 1200px;
-  color:white;
-  font-weight: bold;
-}
-
-.content_area {
-  width:70%; 
+.header_menu {
+  font-size: 20px;
 }
 
 .container {

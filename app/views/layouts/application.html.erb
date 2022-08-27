@@ -15,10 +15,9 @@
     <header>
       <nav class="navbar ">
   <h1 class="p-3 top_title">
-  <i class="fas fa-subway"></i>
   Trails
   </h1>
-  <div class="footer">
+  <div class="header_menu">
     <% if current_user.present? && current_user.admin? %>
       <%= link_to "admin", rails_admin_path %>
     <% else %>
@@ -40,8 +39,8 @@
 
           <%= yield %>
 
-    <footer>
-      <p class="footer">©2022 Trails</p>
+    <footer class="footer">
+      <p>©2022 Trails</p>
     </footer>
   </div>
   </body>
