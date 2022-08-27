@@ -11,18 +11,14 @@
   </head>
 
   <body>
-
-<header>
-
-  <nav class="navbar navbar-light">
-
-
-  <h1 class="top_title">
-  <i class="bi bi-train-front-fill"></i>
+    <div class="footerFixed">
+    <header>
+      <nav class="navbar ">
+  <h1 class="p-3 top_title">
+  <i class="fas fa-subway"></i>
   Trails
   </h1>
-
-  <div>
+  <div class="footer">
     <% if current_user.present? && current_user.admin? %>
       <%= link_to "admin", rails_admin_path %>
     <% else %>
@@ -38,17 +34,15 @@
       <%= link_to "Login", new_session_path %>
     <% end %>
   </div>
-
+  <p id="notice"><%= notice %></p>
   </nav>
+    </header>
 
-  </header>
+          <%= yield %>
 
-    <div class="container">
-      <p id="notice"><%= notice %></p>
-      <%= yield %>
-    </div>
-    <footer class="footer">
-      <p>©2022 Trails</p>
+    <footer>
+      <p class="footer">©2022 Trails</p>
     </footer>
+  </div>
   </body>
 </html>
