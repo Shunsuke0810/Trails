@@ -3,6 +3,7 @@ ja:
     models:
       blog: ブログ
       user: ユーザー
+      post: 投稿
     attributes:
       blog:
         title: タイトル
@@ -15,5 +16,8 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+        ocurence: 発生時刻
+        label: ラベル
       post:
         ocurence: 発生時刻
+        label: ラベル
