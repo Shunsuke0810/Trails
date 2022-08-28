@@ -5,13 +5,10 @@ RSpec.describe '投稿機能', type: :system do
     before do
       FactoryBot.create(:unit)
       FactoryBot.create(:label)
-      visit new_user_path
-        fill_in 'user[name]', with: 'A'
-        fill_in 'user[email]', with: 'aaa@aaa.com'
-        fill_in 'user[password]', with: 'aaaaaa'
-        fill_in 'user[password_confirmation]', with: 'aaaaaa'
-        fill_in 'user[position]', with: 'driver'
-        find("#user_unit_id").find("option[value='1']").select_option
+      FactoryBot.create(:user_c)
+      visit new_session_path
+        fill_in 'session[email]', with: 'test@test.com'
+        fill_in 'session[password]', with: 'aaaaaa'
         click_button 'commit'
     end
     context '新規投稿が作成される' do
@@ -56,9 +53,9 @@ RSpec.describe '投稿機能', type: :system do
         check 'Label_A'
         click_button 'commit'
         visit my_posts_path
-        click_link "Destroy"
-        page.accept_confirm "Are you sure?"
-        expect(page).to have_content 'Post was successfully destroyed.'
+        click_link '削除'
+        page.accept_confirm '削除してよろしいですか?'
+        expect(page).to have_content '投稿が削除されました'
       end
     end
   end

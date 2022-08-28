@@ -4,7 +4,7 @@ RSpec.describe 'ブックマーク機能', type: :system do
     before do
       FactoryBot.create(:unit)
       FactoryBot.create(:label)
-      FactoryBot.create(:user_a)
+      FactoryBot.create(:user_c)
       FactoryBot.create(:post)
       FactoryBot.create(:user_b)
         visit new_session_path
@@ -14,24 +14,24 @@ RSpec.describe 'ブックマーク機能', type: :system do
     end
     context 'お気に入りを登録ボタンを押す' do
       it '登録が完了する' do
-        click_link 'Show'
+        click_link '詳細'
         click_on "ブックマークする"
-        expect(page).to have_content 'Aさんの投稿をお気に入り登録しました'
+        expect(page).to have_content 'Cさんの投稿をお気に入り登録しました'
       end
     end
     context 'お気に入りを解除ボタンを押す' do
       it '解除が完了する' do
-        click_link 'Show'
+        click_link '詳細'
         click_on "ブックマークする"
         click_on "ブックマークを解除する"
-        expect(page).to have_content 'Aさんの投稿をお気に入り解除しました'
+        expect(page).to have_content 'Cさんの投稿をお気に入り解除しました'
       end
     end
     context 'お気に入り＆コメント一覧のリンクに遷移' do
       it 'お気に入りした投稿が表示されている' do
-        click_link 'Show'
+        click_link '詳細'
         click_on "ブックマークする"
-        click_on 'Back'
+        click_on '戻る'
         click_on 'ブックマーク&コメント一覧'
         expect(page).to have_content 'test_content'
       end
