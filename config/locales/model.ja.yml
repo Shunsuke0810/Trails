@@ -5,6 +5,12 @@ ja:
       user: ユーザー
       post: 投稿
       session: セッション
+      unit: 所属部署
+      labelling: ラベル中間テーブル
+      label: ラベル
+      comment: コメント
+      book_mark: ブックマーク
+      admin: 管理者
     attributes:
       blog:
         title: タイトル
@@ -22,6 +28,33 @@ ja:
         position: 役職
         unit: 所属部署
         show: 詳細
+        ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
+        label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lng: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+        posts: 投稿
+        book_mark_posts: ブックマークされた投稿
+        posts: 投稿
+        password_digest: パスワードダイジェスト
       session:
         name: 名前
         email: メールアドレス
@@ -34,4 +67,146 @@ ja:
         show: 詳細
         map: マップ
         lat: 緯度
+        lng: 経度
         lang: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+      comment:
+        ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
+        label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lng: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+      book_mark:
+        ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
+        label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lng: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+      label:
+        ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
+        label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lng: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+        posts: 投稿
+        name: 名前
+      labelling:
+        ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
+        label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lng: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+        posts: 投稿
+        name: 名前
+      unit:
+        ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
+        label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lng: 経度
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        blog: ブログ
+        user: ユーザー
+        post: 投稿
+        session: セッション
+        unit: 所属部署
+        labellings: ラベル中間テーブル
+        labels: ラベル
+        comments: コメント
+        book_marks: ブックマーク
+        admin: 管理者
+        book_mark_users: ブックマークユーザー
+        posts: 投稿
+        name: 名前
+        users: ユーザー

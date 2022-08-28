@@ -1,6 +1,5 @@
 <div>
   <div class="signup_form">
-  <p id="notice"><%= notice %></p>
   <div>
     <h1>アカウント登録</h1>
   </div>
@@ -20,15 +19,15 @@
       <%= form_with(model: @user, local: true) do |f| %>  
         <div>
           <%= f.label :name %><br>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, placeholder: "名前を入力"  %>
         </div><br>
         <div>
           <%= f.label :email %><br>
-          <%= f.email_field :email %>
+          <%= f.email_field :email, placeholder: "メールアドレスを入力" %>
         <div>
         <div>
           <%= f.label :position %><br>
-          <%= f.text_field :position %>
+          <%= f.text_field :position, placeholder: "役職を入力" %>
         </div><br>
         <div>
         <%= f.label :unit %><br>
@@ -38,11 +37,11 @@
         </div>
         <div>
         <%= f.label :password %><br>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, placeholder: "パスワードを入力" %>
         </div><br>
         <div>
         <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, placeholder: "もう一度入力" %>
         </div><br>
         </div>
         <div>

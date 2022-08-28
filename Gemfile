@@ -72,3 +72,5 @@ gem 'rexml'
 gem 'font-awesome-sass', '~> 5.12.0'
 
 gem "font-awesome-rails"
+
+gem 'rails-i18n'
