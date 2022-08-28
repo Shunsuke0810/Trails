@@ -35,19 +35,19 @@ RSpec.describe 'ユーザーモデル機能', type: :system do
         fill_in 'session[email]', with: 'test@test.com'
         fill_in 'session[password]', with: 'aaaaaa'
         click_button 'commit'
-        click_link "Logout"
+        click_link "ログアウト"
         expect(page).to have_content 'ログアウトしました'
       end
     end
     context 'ログインせずに投稿画面のパスを入力' do
       it 'ログイン画面に遷移' do
         visit new_post_path
-        expect(page).to have_content 'Login'
+        expect(page).to have_content 'ログイン'
       end
     end
     context 'ユーザー情報を編集' do
       it '編集内容が反映される' do
-        FactoryBot.create(:user_a)
+        FactoryBot.create(:user_c)
         visit new_session_path
         fill_in 'session[email]', with: 'test@test.com'
         fill_in 'session[password]', with: 'aaaaaa'

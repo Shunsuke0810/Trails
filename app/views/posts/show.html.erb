@@ -1,31 +1,32 @@
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Ocurence:</strong>
+  <strong>発生時刻:</strong>
   <%=l @post.ocurence %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>事象:</strong>
   <%= @post.content %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong>発生地点:</strong>
   <%= @post.location %>
 </p>
 
 <p>
-  <strong>Train code:</strong>
+  <strong>車両番号:</strong>
   <%= @post.train_code %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>ユーザー:</strong>
   <%= @post.user.name %>
 </p>
 
 <p>
-  <strong>label:</strong>
+  <strong>ラベル:</strong>
   <%= @post.labels.pluck(:name) %>
 </p>
 
@@ -66,16 +67,13 @@ function initMap(){
 <% else %>
 <% end %>
 
-<div class="container">
-
   <p>コメント一覧</p>
 
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-  </div>
+
 
   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-</div>
 
 <% unless @post.user_id == current_user.id %>
   <% if @book_mark.present? %>
@@ -86,8 +84,12 @@ function initMap(){
 <% end %>
 
 <% if @post.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_post_path(@post) %> 
+  <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success font-weight-bold" %> 
+  <%= link_to '削除', @post, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger font-weight-bold"%>
 <% else %>
 <% end %>
 
-<%= link_to 'Back',user_path(current_user.id) %>
+
+</div>
+
+<%= link_to '戻る',user_path(current_user.id) %>

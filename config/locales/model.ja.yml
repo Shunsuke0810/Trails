@@ -4,6 +4,7 @@ ja:
       blog: ブログ
       user: ユーザー
       post: 投稿
+      session: セッション
     attributes:
       blog:
         title: タイトル
@@ -18,6 +19,19 @@ ja:
         remember_me: ログインを記憶
         ocurence: 発生時刻
         label: ラベル
+        position: 役職
+        unit: 所属部署
+        show: 詳細
+      session:
+        name: 名前
+        email: メールアドレス
       post:
         ocurence: 発生時刻
+        content: 事象
+        location: 発生地点
+        train_code: 列車番号
         label: ラベル
+        show: 詳細
+        map: マップ
+        lat: 緯度
+        lang: 経度

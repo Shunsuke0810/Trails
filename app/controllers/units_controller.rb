@@ -39,7 +39,7 @@ class UnitsController < ApplicationController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to unit_url(@unit), notice: "Unit was successfully updated." }
+        format.html { redirect_to unit_url(@unit), notice: "所属部署が編集されました." }
         format.json { render :show, status: :ok, location: @unit }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class UnitsController < ApplicationController
     @unit.destroy
 
     respond_to do |format|
-      format.html { redirect_to units_url, notice: "Unit was successfully destroyed." }
+      format.html { redirect_to units_url, notice: "所属部署が削除されました." }
       format.json { head :no_content }
     end
   end

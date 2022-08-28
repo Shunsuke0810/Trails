@@ -1,123 +1,125 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: post, local: true) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "件のエラー") %> が発生したため送信されませんでした</h2>
+
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :ocurence %>
+      <%= form.datetime_field :ocurence %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+    </div>
+
+    <div class="field">
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </div>
+
+    <div class="field">
+      <%= form.label :train_code %>
+      <%= form.text_field :train_code %>
+    </div>
+
+    <div class="field" class="label_field">
+      <%= form.label :label %>
+      <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+    </div>
+
+      <div class="field">
+      <%= form.label :lat %>
+      <%= form.text_field :lat,:value =>"", id: :lat %>
+    </div>
+
+      <div class="field">
+      <%= form.label :lang %>
+      <%= form.text_field :lng,:value =>"", id: :lng %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :ocurence %>
-    <%= form.datetime_field :ocurence %>
-  </div>
+  <h2>マップ</h2>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
+  <input id="address" type="textbox" value="">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <p>検索ボックスに最寄の建物や地名等を入力し検索ボタンを押すとマーカーが出現します<p>
+  <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+  <div id='map'></div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
+  <style>
+  #map {
+    height: 600px;
+    width: 600px;
+  }
+  </style>
 
-  <div class="field">
-    <%= form.label :train_code %>
-    <%= form.text_field :train_code %>
-  </div>
+  <script>
+  //初期マップの設定
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
 
-  <div class="field">
-    <%= form.label :label %>
-    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
-  </div>
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: 35.6803997, lng:139.7690174},  //東京
+      zoom: 15,
 
-    <div class="field">
-    <%= form.label :lat %>
-    <%= form.text_field :lat,:value =>"緯度", id: :lat %>
-  </div>
+    });
+  }
 
-    <div class="field">
-    <%= form.label :lang %>
-    <%= form.text_field :lng,:value =>"経度", id: :lng %>
-  </div>
+  //検索後のマップ作成
+  let geocoder
+  let aft
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+          //マーカーが複数できないようにする
+          if (aft == true){
+              marker.setMap(null);
+          }
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+          //新しくマーカーを作成する
+          map.setCenter(results[0].geometry.location);
+              marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              draggable: true // ドラッグ可能にする
+          });
 
-<h2>Map</h2>
+          //二度目以降か判断
+          aft = true
 
-<input id="address" type="textbox" value="">
-<input type="button" value="検索" onclick="codeAddress()">
-<p>検索ボックスに最寄の建物や地名等を入力し検索ボタンを押すとマーカーが出現します<p>
-<p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
-<div id='map'></div>
+          //検索した時に緯度経度を入力する
+          document.getElementById('lat').value = results[0].geometry.location.lat();
+          document.getElementById('lng').value = results[0].geometry.location.lng();
 
-<style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-</style>
+          // マーカーのドロップ（ドラッグ終了）時のイベント
+          google.maps.event.addListener( marker, 'dragend', function(ev){
+              // イベントの引数evの、プロパティ.latLngが緯度経度
+              document.getElementById('lat').value = ev.latLng.lat();
+              document.getElementById('lng').value = ev.latLng.lng();
+          });
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });   
+  }
 
-<script>
-//初期マップの設定
-let map
-let marker
-function initMap(){
-  geocoder = new google.maps.Geocoder()
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
 
-  map = new google.maps.Map(document.getElementById('map'), {
-    center:  {lat: 35.6803997, lng:139.7690174},  //東京
-    zoom: 15,
-
-  });
-}
-
-//検索後のマップ作成
-let geocoder
-let aft
-function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-        //マーカーが複数できないようにする
-        if (aft == true){
-            marker.setMap(null);
-        }
-
-        //新しくマーカーを作成する
-        map.setCenter(results[0].geometry.location);
-            marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            draggable: true // ドラッグ可能にする
-        });
-
-        //二度目以降か判断
-        aft = true
-
-        //検索した時に緯度経度を入力する
-        document.getElementById('lat').value = results[0].geometry.location.lat();
-        document.getElementById('lng').value = results[0].geometry.location.lng();
-
-        // マーカーのドロップ（ドラッグ終了）時のイベント
-        google.maps.event.addListener( marker, 'dragend', function(ev){
-            // イベントの引数evの、プロパティ.latLngが緯度経度
-            document.getElementById('lat').value = ev.latLng.lat();
-            document.getElementById('lng').value = ev.latLng.lng();
-        });
-    } else {
-      alert('該当する結果がありませんでした：' + status);
-    }
-  });   
-}
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>

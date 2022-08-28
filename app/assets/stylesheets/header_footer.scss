@@ -2,16 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.top_background {
-  background-image: url("/images/SL.jpeg");
-  background-size: cover;
-  height: 1200px;
-  color:white;
-  font-weight: bold;
-}
-
-.content_area {
-  width:70%; 
+.header_menu {
+  font-size: 20px;
 }
 
 .container {
@@ -56,7 +48,7 @@
   margin: auto;
   font-size: 3rem;
   font-weight: bold;
-  position: absolute;
+  position: fixed;
   margin-top: 0;
   bottom: 0;
   text-align: center;
@@ -70,4 +62,8 @@
 .footer {
   font-size: 1.2rem;
   color: black;
+}
+
+.notice {
+  z-index: 1; 
 }

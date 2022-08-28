@@ -1,37 +1,43 @@
-<h1>ユーザー情報編集</h1>
+<div>
+  <div class="signup_form">
+  <div>
+    <h1>ユーザー情報編集</h1>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "件のエラー") %> が発生したため <%= @user.name %> の更新が送信されませんでした</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    </ul>
-  </div>
-<% end %>
 
-<%= form_with(model: @user, local: true) do |f| %>  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <%= form_with(model: @user, local: true) do |f| %>  
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+      <%= f.label :email %><br>
+      <%= f.email_field :email %><br>
 
-  <%= f.label :position %>
-  <%= f.text_field :position %>
+      <%= f.label :position %><br>
+      <%= f.text_field :position %><br>
 
-  <%= f.label :unit %>
-  <%=f.collection_select :unit_id, @unit.all, :id, :name, include_blank: "選択して下さい" %>
+      <%= f.label :unit %><br>
+      <%=f.collection_select :unit_id, @unit.all, :id, :name, include_blank: "選択して下さい" %><br>
 
-<%= link_to "所属部署を新規作成する場合コチラ", new_unit_path %>
+    <%= link_to "所属部署を新規作成する場合コチラ", new_unit_path %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %><br>
+      <br>
+      <%= f.submit "編集する" %><br>
+    <% end %>
+    </div>
+</div>
 
-  <%= f.submit "edit my account" %>
-<% end %>
 

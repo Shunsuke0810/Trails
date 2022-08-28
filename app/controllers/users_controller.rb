@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   
 def edit
+  if @user == current_user
+    render "edit"
+  else
+    redirect_to user_path(current_user.id), notice: "他人のユーザー情報は編集できません"
+  end
 end
 
 def update

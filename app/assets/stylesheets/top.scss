@@ -1,0 +1,37 @@
+
+.top_background {
+  background-image: url("/images/SL.jpeg");
+  background-size: cover;
+  height: 1400px;
+  color:white;
+}
+
+.content_area {
+  width:60%;
+  height: relative;
+  background-color:rgba(10, 10, 10, 0.8);
+  padding: 30px;
+}
+
+.index_title1 {
+font-size: 50px;
+font-weight: bold;
+line-height: 1.5;
+}
+
+.index_title2 {
+font-size: 30px;
+font-weight: bold;
+line-height: 1.5;
+}
+
+.index_title3 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 0.5;
+  }
+
+.index_text {
+font-size: 20px;
+line-height: 1.5;
+}
