@@ -29,6 +29,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to user_path(current_user.id), notice: "他人の投稿は編集できません"
+    end
   end
 
   # POST /posts or /posts.json

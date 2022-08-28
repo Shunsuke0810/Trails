@@ -67,16 +67,13 @@ function initMap(){
 <% else %>
 <% end %>
 
-<div class="container">
-
   <p>コメント一覧</p>
 
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-  </div>
+
 
   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-</div>
 
 <% unless @post.user_id == current_user.id %>
   <% if @book_mark.present? %>
@@ -87,8 +84,12 @@ function initMap(){
 <% end %>
 
 <% if @post.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_post_path(@post) %> 
+  <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success font-weight-bold" %> 
+  <%= link_to '削除', @post, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger font-weight-bold"%>
 <% else %>
 <% end %>
 
-<%= link_to 'Back',user_path(current_user.id) %>
+
+</div>
+
+<%= link_to '戻る',user_path(current_user.id) %>
