@@ -1,31 +1,32 @@
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Ocurence:</strong>
+  <strong>発生時刻:</strong>
   <%=l @post.ocurence %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>事象:</strong>
   <%= @post.content %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong>発生地点:</strong>
   <%= @post.location %>
 </p>
 
 <p>
-  <strong>Train code:</strong>
+  <strong>車両番号:</strong>
   <%= @post.train_code %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>ユーザー:</strong>
   <%= @post.user.name %>
 </p>
 
 <p>
-  <strong>label:</strong>
+  <strong>ラベル:</strong>
   <%= @post.labels.pluck(:name) %>
 </p>
 

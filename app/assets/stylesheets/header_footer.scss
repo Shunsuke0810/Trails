@@ -48,7 +48,7 @@
   margin: auto;
   font-size: 3rem;
   font-weight: bold;
-  position: absolute;
+  position: fixed;
   margin-top: 0;
   bottom: 0;
   text-align: center;
@@ -62,4 +62,8 @@
 .footer {
   font-size: 1.2rem;
   color: black;
+}
+
+.notice {
+  z-index: 1; 
 }

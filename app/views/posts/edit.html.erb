@@ -1,12 +1,14 @@
-<h1>Editing Post</h1>
+<div class="page_field_post_form">
+
+<h1>投稿を編集する</h1>
 
 <%= form_with(model: @post, local: true) do |form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "件のエラー") %> が発生したため編集が送信されませんでした:</h2>
 
       <ul>
-        <% post.errors.full_messages.each do |message| %>
+        <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -129,6 +131,6 @@ function codeAddress(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
 
+<%= link_to '戻る', my_posts_path %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+</div>
