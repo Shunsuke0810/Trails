@@ -17,6 +17,7 @@ describe 'モデル機能', type: :model do
   describe 'ユーザー作成テスト' do
     context 'ユーザー新規作成' do
       it '作成した内容が正しく反映される' do
+        FactoryBot.create(:unit)
         user = FactoryBot.build(:user_a)
         expect(user).to be_valid
       end
@@ -49,7 +50,9 @@ describe 'モデル機能', type: :model do
   describe '投稿機能作成テスト' do
     context '投稿新規作成' do
       it '作成した内容が正しく反映される' do
-        post = FactoryBot.build(:post)
+        FactoryBot.create(:unit)
+        user = FactoryBot.create(:user_a)
+        post = FactoryBot.build(:post, user:user)
         expect(post).to be_valid
       end
     end
@@ -67,20 +70,18 @@ describe 'モデル機能', type: :model do
     end
   end
   describe 'コメント機能テスト' do
-    before do
-      FactoryBot.create(:unit)
-      FactoryBot.create(:user_a)
-      FactoryBot.create(:post)
-    end
+      let!(:unit){FactoryBot.create(:unit)}
+      let!(:user){FactoryBot.create(:user_a, unit:unit )}
+      let!(:post){FactoryBot.create(:post, user:user)}
     context 'コメント新規作成' do
       it '作成した内容が正しく反映される' do
-        comment = FactoryBot.build(:comment)
+        comment = FactoryBot.build(:comment, post:post, user:user)
         expect(comment).to be_valid
       end
     end
     context 'コメントを空で作成' do
       it 'バリデーションにひっかかる' do
-        comment = FactoryBot.build(:comment, content: nil)
+        comment = FactoryBot.build(:comment, content: nil, post:post, user:user)
         expect(comment).not_to be_valid
       end
     end
