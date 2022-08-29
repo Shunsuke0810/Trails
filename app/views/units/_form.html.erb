@@ -1,22 +1,32 @@
-<%= form_with(model: unit, local: true) do |form| %>
-  <% if unit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+<div class="unit_form">
+    <div class="unit_area">
 
-      <ul>
-        <% unit.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <h1>新しい部署名を登録する</h1>
 
-  <div class="field">
-    <%= form.label :部署名 %>
-    <%= form.text_field :name, placeholder: "部署名を入力" %>
+    <%= form_with(model: unit, local: true) do |form| %>
+      <% if unit.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(unit.errors.count, "件のエラー") %> が発生したため送信されませんでした</h2>
+
+          <ul>
+            <% unit.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :部署名 %>
+        <%= form.text_field :name, placeholder: "部署名を入力" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+
+  <%= link_to 'ユーザー新規登録へ戻る', new_user_path %>
+
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
