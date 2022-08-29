@@ -1,19 +1,22 @@
-<div class="signup_form">
-  <h1>ログイン</h1>
-  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+<div class="login_form">
+  <div class="login_area">
+    <div>
+      <h1>ログイン</h1>
+      <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
 
-  <div>
-    <%= f.label :メール %><br>
-    <%= f.email_field :email %>
-  </div>
+    </div>
+    <div>
+      <%= f.label :メール %><br>
+      <%= f.email_field :email, placeholder: "メールアドレスを入力" %>
+    </div>
 
-  <div>
-    <%= f.label :パスワード %><br>
-    <%= f.password_field :password %>
-  </div><br>
-
-  <div>
-    <%= f.submit "ログイン" %>
-  <% end %>
+    <div>
+      <%= f.label :パスワード %><br>
+      <%= f.password_field :password, placeholder: "パスワードを入力" %>
+    </div><br>
+    <div>
+      <%= f.submit "ログイン" %>
+    <% end %>
+    </div>
   </div>
 </div>

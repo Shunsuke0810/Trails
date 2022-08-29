@@ -1,4 +1,4 @@
-<div class="page_field_post_form">
+<div class="post_form">
 
 <h1>投稿を編集する</h1>
 
@@ -40,14 +40,16 @@
     <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
   </div>
 
+  <div  class="field d-none">
     <div class="field">
-    <%= form.label :lat %>
-    <%= form.text_field :lat %>
-  </div>
+      <%= form.label :lat %>
+      <%= form.text_field :lat %>
+    </div>
 
     <div class="field">
-    <%= form.label :lang %>
-    <%= form.text_field :lng %>
+      <%= form.label :lang %>
+      <%= form.text_field :lng %>
+    </div>
   </div>
 
 

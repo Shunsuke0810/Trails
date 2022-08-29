@@ -1,0 +1,38 @@
+
+.post_form {
+  width:1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.show_post_form {
+  width:1200px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+}
+
+.post_show_index {
+  font-size: 50px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.post_container {
+  width:1000px;
+}
+
+.post_field {
+  width:60%;
+  float:left;
+}
+
+.comment_field {
+  padding: 30px;
+  width:40%;
+  float:left;
+}
+.container {
+  height: auto;
+  position: relative;
+}

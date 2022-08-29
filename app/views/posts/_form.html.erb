@@ -19,17 +19,17 @@
 
     <div class="field">
       <%= form.label :content %>
-      <%= form.text_field :content %>
+      <%= form.text_field :content, placeholder: "事象を入力" %>
     </div>
 
     <div class="field">
       <%= form.label :location %>
-      <%= form.text_field :location %>
+      <%= form.text_field :location, placeholder: "発生地点を入力" %>
     </div>
 
     <div class="field">
       <%= form.label :train_code %>
-      <%= form.text_field :train_code %>
+      <%= form.text_field :train_code, placeholder: "列車番号を入力" %>
     </div>
 
     <div class="field" class="label_field">
@@ -37,12 +37,13 @@
       <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
     </div>
 
-      <div class="field">
+      
+      <div class="field d-none">
       <%= form.label :lat %>
       <%= form.text_field :lat,:value =>"", id: :lat %>
     </div>
 
-      <div class="field">
+      <div class="field d-none">
       <%= form.label :lang %>
       <%= form.text_field :lng,:value =>"", id: :lng %>
     </div>
@@ -54,7 +55,7 @@
 
   <h2>マップ</h2>
 
-  <input id="address" type="textbox" value="">
+  <input id="address" type="textbox" value="" placeholder="地名・地点を入力">
   <input type="button" value="検索" onclick="codeAddress()">
   <p>検索ボックスに最寄の建物や地名等を入力し検索ボタンを押すとマーカーが出現します<p>
   <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>

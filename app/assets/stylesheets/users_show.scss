@@ -2,6 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.mypage_links {
-  display:inline;
+.index_menu {
+  text-align: center;
+  margin: 0 50 ;
 }
+.profile_container {
+  width:960px;
+}
+
+.profile {
+  padding: 20px;
+  float:left;
+  width: 40%;
+  text-align: left;
+}
+
+.user_links {
+  display: inline-block;
+  width: 60%;
+  padding: 20px;
+  text-align: left;
+}
+
+.user_links a {
+  color:black;
+}
+
+.table_index {
+  width:800px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  clear:both;
+}
+

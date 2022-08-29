@@ -1,95 +1,107 @@
-<p id="notice"><%= notice %></p>
+<div class="show_post_form">
+  <div class="post_container">
+    <div class="post_field">
+      <p class="post_show_index"><%= @post.user.name %>さんの投稿</p>
 
-<p>
-  <strong>発生時刻:</strong>
-  <%=l @post.ocurence %>
-</p>
+      <p>
+        <strong>発生時刻:</strong>
+        <%=l @post.ocurence %>
+      </p>
 
-<p>
-  <strong>事象:</strong>
-  <%= @post.content %>
-</p>
+      <p>
+        <strong>事象:</strong>
+        <%= @post.content %>
+      </p>
 
-<p>
-  <strong>発生地点:</strong>
-  <%= @post.location %>
-</p>
+      <p>
+        <strong>発生地点:</strong>
+        <%= @post.location %>
+      </p>
 
-<p>
-  <strong>車両番号:</strong>
-  <%= @post.train_code %>
-</p>
+      <p>
+        <strong>車両番号:</strong>
+        <%= @post.train_code %>
+      </p>
 
-<p>
-  <strong>ユーザー:</strong>
-  <%= @post.user.name %>
-</p>
+      <p>
+        <strong>ユーザー:</strong>
+        <%= @post.user.name %>
+      </p>
 
-<p>
-  <strong>ラベル:</strong>
-  <%= @post.labels.pluck(:name) %>
-</p>
+      <p>
+        <strong>ラベル:</strong>
+        <%= @post.labels.pluck(:name) %>
+      </p>
+
+      <% if @post.lng.present? %>
+
+      <div id='map'></div>
+
+      <style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+      </style>
+      
+      <!-- js部分 -->
+      <script>
+      //初期マップの設定
+      let map
+      let marker
+      function initMap(){
+        geocoder = new google.maps.Geocoder()
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+          zoom: 15,
+        });
+
+        marker = new google.maps.Marker({
+          position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+          map: map
+        });
+      }
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
+
+      <% else %>
+      <% end %>
+          <%= link_to '戻る',user_path(current_user.id) %>
+    </div>
+
+    <div class="comment_field">
+
+      <div >
+            <% unless @post.user_id == current_user.id %>
+          <% if @book_mark.present? %>
+            <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'ブックマークする', book_marks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+
+      <div class="container">
+
+        <p>コメント一覧</p>
+
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+        </div>
+        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+
+      </div>
+
+        <% if @post.user_id == current_user.id %>
+          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success font-weight-bold" %> 
+          <%= link_to '削除', @post, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger font-weight-bold"%>
+        <% else %>
+        <% end %>
+
+    </div>
 
 
-<% if @post.lng.present? %>
-
-<div id='map'></div>
-
-<style>
-#map {
-  height: 600px;
-  width: 100%;
-}
-</style>
-
-<!-- js部分 -->
-<script>
-//初期マップの設定
-let map
-let marker
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
-    zoom: 15,
-  });
-
-  marker = new google.maps.Marker({
-    position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
-    map: map
-  });
-}
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_map_key'] %>&callback=initMap" async defer></script>
-
-<% else %>
-<% end %>
-
-  <p>コメント一覧</p>
-
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-
-
-  <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-
-<% unless @post.user_id == current_user.id %>
-  <% if @book_mark.present? %>
-    <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'ブックマークする', book_marks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-
-<% if @post.user_id == current_user.id %>
-  <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success font-weight-bold" %> 
-  <%= link_to '削除', @post, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger font-weight-bold"%>
-<% else %>
-<% end %>
-
-
+    </div>
+  </div>
 </div>
-
-<%= link_to '戻る',user_path(current_user.id) %>

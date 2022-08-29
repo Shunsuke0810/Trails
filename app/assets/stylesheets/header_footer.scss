@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+.notice {
+display: inline-block;
+background-color: rgb(106, 195, 131);
+font-size: 20px;
+padding: 10px; 
+margin: 10px;
+float: right;
+}
 
 .header_menu {
   font-size: 20px;
@@ -47,7 +55,6 @@
   margin: auto;
   font-size: 3rem;
   font-weight: bold;
-  position: fixed;
   margin-top: 0;
   bottom: 0;
   text-align: center;

@@ -15,6 +15,7 @@ module Trails
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     config.generators do |g|
+    config.i18n.default_locale = :ja
       g.test_framework :rspec,
         fixtures: true,
         view_specs: false,
