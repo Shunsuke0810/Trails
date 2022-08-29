@@ -1,4 +1,4 @@
-<div class="post_form">
+<div class="show_post_form">
   <div class="post_container">
     <div class="post_field">
       <p class="post_show_index"><%= @post.user.name %>さんの投稿</p>
@@ -72,27 +72,33 @@
     </div>
 
     <div class="comment_field">
-      <p>コメント一覧</p>
 
-      <div id="comments_area">
-        <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-
-
-      <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-
-      <% unless @post.user_id == current_user.id %>
-        <% if @book_mark.present? %>
-          <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
-        <% else %>
-          <%= link_to 'ブックマークする', book_marks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+      <div >
+            <% unless @post.user_id == current_user.id %>
+          <% if @book_mark.present? %>
+            <%= link_to 'ブックマークを解除する', book_mark_path(id: @book_mark.id), method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'ブックマークする', book_marks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+          <% end %>
         <% end %>
-      <% end %>
 
-      <% if @post.user_id == current_user.id %>
-        <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success font-weight-bold" %> 
-        <%= link_to '削除', @post, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger font-weight-bold"%>
-      <% else %>
-      <% end %>
+      <div class="container">
+
+        <p>コメント一覧</p>
+
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+        </div>
+        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+
+      </div>
+
+        <% if @post.user_id == current_user.id %>
+          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success font-weight-bold" %> 
+          <%= link_to '削除', @post, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: "btn btn-danger font-weight-bold"%>
+        <% else %>
+        <% end %>
+
     </div>
 
 

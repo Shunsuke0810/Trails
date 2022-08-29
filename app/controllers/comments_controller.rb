@@ -11,9 +11,10 @@ class CommentsController < ApplicationController
         format.html { render :index }
         format.js { render :index }
       else
-        format.html { render :index }
+        # format.js { redirect_to post_path(@post), notice: '投稿できませんでした...' } 
+        format.html { render :show }
         flash.now[:notice] = '投稿できませんでした...'
-        format.js { render :index }
+        format.js { render :show }
       end
     end
   end
