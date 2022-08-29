@@ -1,6 +1,5 @@
-<div>
-  <div class="signup_form">
-  <div>
+<div class="signup_form">
+  <div class="signup_area">
     <h1>ユーザー情報編集</h1>
 
     <% if @user.errors.any? %>
@@ -37,7 +36,8 @@
       <br>
       <%= f.submit "編集する" %><br>
     <% end %>
-    </div>
+    <%= link_to '戻る', user_path(current_user.id) %>
+  </div>
 </div>
 
 

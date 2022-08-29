@@ -1,28 +1,42 @@
 <div class="page_field">
-  <div class="profile">
-  <h1><%= @user.name %>のページ</h1>
-    <h3>プロフィール</h3>
-      <p>メールアドレス: <%= @user.email %></p>
-      <p>役職: <%= @user.position %></p>
-      <p>所属部署: <%= @user.unit.name %></p>
+    <div class="index_menu">
+      <h1><%= @user.name %>のページ</h1>
+        <div class="profile_container">
+        <div class="profile">
+          <h3>【プロフィール】</h3>
+            <p>名前: <%= @user.name %></p>
+            <p>メールアドレス: <%= @user.email %></p>
+            <p>役職: <%= @user.position %></p>
+            <p>所属部署: <%= @user.unit.name %></p>
+        </div>
+      
+        <div class="user_links">
+
+          <p class="btn btn-primary" type="button">
+            <%= link_to "新規投稿", new_post_path %>
+          </p>
+
+          <p class="btn btn-success">
+          <%= link_to "#{current_user.name}の投稿一覧", my_posts_path %>
+          </p>
+
+          <p class="btn btn-secondary">
+          <%= link_to "全てのユーザーの投稿一覧", posts_path %>
+          </p>
+
+          <p class="btn btn-info">
+          <%= link_to "ブックマーク&コメント一覧", markings_path %>
+          </p>
+
+          <p class="btn btn-warning">
+          <%= link_to "ユーザー情報編集", edit_user_path %>
+          </p>
+        </div>
+      </div>
     </div>
   
-  <div class="mypage_links">
-    <div>
-      <%= link_to "新規投稿", new_post_path %>
-    </div>
-    <%= link_to "全てのユーザーの投稿一覧", posts_path %>
-    <div>
-    <%= link_to "#{current_user.name}の投稿一覧", my_posts_path %>
-    </div>
-    <%= link_to "ブックマーク&コメント一覧", markings_path %>
-    <div>
-    <%= link_to "ユーザー情報編集", edit_user_path %>
-    </div>
-  </div>
 
-
-  <h1><%= @user.unit.name %>の投稿一覧</h1>
+  <h1 class="table_index"><%= @user.unit.name %>の投稿一覧</h1>
 
   <table class="table table-dark table-hover">
     <thead>
