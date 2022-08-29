@@ -32,11 +32,16 @@
       <%= link_to "ログイン", new_session_path %>
     <% end %>
   </nav>
-  <div>
+  
+  <% if notice %>
     <div id="notice" class="notice"><%= notice %></div>
-  <div>
+  <% end %>
 
-          <%= yield %>
+  <div class="body">
+    <div class="yield">
+      <%= yield %>
+    </div>
+  </body>
 
     <footer class="footer">
       <p>©2022 Trails</p>

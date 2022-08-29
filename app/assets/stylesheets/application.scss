@@ -17,14 +17,19 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-.page_field {
-  padding:30px;
-}
-
 .text_field {
   text-align: left;
+}
+
+.page_field {
+  padding:30px;
 }
 
 a {
   font-size: 25px;
 }
+
+.yield {
+  background-color: rgb(223, 226, 225);
+}
+

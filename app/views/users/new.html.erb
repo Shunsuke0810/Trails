@@ -1,52 +1,54 @@
 <div>
   <div class="signup_form">
-  <div>
-    <h1>アカウント登録</h1>
-  </div>
-    <div class="text_field">
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "件のエラー") %> が発生したため <%= @user.name %> が作成されませんでした</h2>
-        <ul class="error_explanation">
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="signup_form ">
-      <%= form_with(model: @user, local: true) do |f| %>  
-        <div>
-          <%= f.label :name %><br>
-          <%= f.text_field :name, placeholder: "名前を入力"  %>
-        </div><br>
-        <div>
-          <%= f.label :email %><br>
-          <%= f.email_field :email, placeholder: "メールアドレスを入力" %>
-        <div>
-        <div>
-          <%= f.label :position %><br>
-          <%= f.text_field :position, placeholder: "役職を入力" %>
-        </div><br>
-        <div>
-        <%= f.label :unit %><br>
-        <%=f.collection_select :unit_id, @unit.all, :id, :name, include_blank: "選択して下さい" %>
-        </div><br>
-        <%= link_to "所属部署を新規作成する場合コチラ", new_unit_path %>
-        </div>
-        <div>
-        <%= f.label :password %><br>
-        <%= f.password_field :password, placeholder: "パスワードを入力" %>
-        </div><br>
-        <div>
-        <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation, placeholder: "もう一度入力" %>
-        </div><br>
-        </div>
-        <div>
-        <%= f.submit "新規作成",class: "btn btn-secondary font-weight-bold"%>
+    <div class="signup_area">
+    <div>
+      <h1>アカウント登録</h1>
+    </div>
+      <div class="text_field">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "件のエラー") %> が発生したため <%= @user.name %> が作成されませんでした</h2>
+          <ul class="error_explanation">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
         </div>
       <% end %>
+
+      <div class="signup_form ">
+        <%= form_with(model: @user, local: true) do |f| %>  
+          <div>
+            <%= f.label :name %><br>
+            <%= f.text_field :name, placeholder: "名前を入力"  %>
+          </div><br>
+          <div>
+            <%= f.label :email %><br>
+            <%= f.email_field :email, placeholder: "メールアドレスを入力" %>
+          <div>
+          <div>
+            <%= f.label :position %><br>
+            <%= f.text_field :position, placeholder: "役職を入力" %>
+          </div><br>
+          <div>
+          <%= f.label :unit %><br>
+          <%=f.collection_select :unit_id, @unit.all, :id, :name, include_blank: "選択して下さい" %>
+          </div><br>
+          <%= link_to "所属部署を新規作成する場合コチラ", new_unit_path %>
+          </div>
+          <div>
+          <%= f.label :password %><br>
+          <%= f.password_field :password, placeholder: "パスワードを入力" %>
+          </div><br>
+          <div>
+          <%= f.label :password_confirmation %><br>
+          <%= f.password_field :password_confirmation, placeholder: "もう一度入力" %>
+          </div><br>
+          </div>
+          <div>
+          <%= f.submit "新規作成",class: "btn btn-secondary font-weight-bold"%>
+          </div>
+        <% end %>
     </div>
+  </div>
 </div>
