@@ -12,8 +12,8 @@ margin: 10px;
 float: right;
 }
 
-.header_menu {
-  font-size: 20px;
+.header_menu a {
+  font-size: 25px;
 }
 
 .container {
@@ -33,11 +33,16 @@ float: right;
 .navbar {
   background-color: rgb(84, 84, 84);
   width: 100%;
-  padding: 20px 0 10px 0;
+  padding: 10px 0 10px 0;
   color: #19192280;
   font-weight: bold;
   bottom: 0;
   text-align: center;
+}
+
+.navbar h1 {
+  font-size: 50px;
+  padding: 0 0;
 }
 
 .footerFixed{
