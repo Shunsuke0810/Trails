@@ -3,22 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :login_required
   before_action :admin_required, if: :admin_url?
-  # before_action :authenticate_admin!, if: :admin_url
- 
-
-  # def authenticate_admin!
-  #   binding.pry
-  #   if current_user.admin?
-  #     redirect_to rails_admin_path
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
-
-  # def admin_url
-  #   binding.pry
-  #   request.fullpath.include?("/admin")
-  # end
 
   def log_in(user)
     session[:user_id] = user.id

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  # GET /posts or /posts.json
   def index
     @posts = Post.where.not(user_id: current_user.id)
   end
@@ -15,19 +14,16 @@ class PostsController < ApplicationController
     @posts = Post.where(id: [].concat(current_user.book_marks.pluck(:post_id), current_user.comments.pluck(:post_id), Comment.where(post_id: posts_ids).pluck(:post_id)))
   end
 
-  # GET /posts/1 or /posts/1.json
   def show
     @book_mark = current_user.book_marks.find_by(post_id: @post.id)
     @comments = @post.comments
     @comment = @post.comments.build
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
     if @post.user == current_user
       render "edit"
@@ -36,10 +32,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # POST /posts or /posts.json
   def create
     @post = current_user.posts.build(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "投稿が作成されました" }
@@ -51,7 +45,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -64,10 +57,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
-
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "投稿が削除されました" }
       format.json { head :no_content }
@@ -75,12 +66,10 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:ocurence, :content, :location, :train_code,:body,:lat,:lng, { label_ids: [] })
     end
