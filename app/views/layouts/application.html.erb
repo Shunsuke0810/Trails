@@ -11,41 +11,37 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
   </head>
   <body>
-      <nav class="navbar sticky-top">
-  <h1 class="p-3 top_title">
-  <i class="fas fa-subway"></i>
-  Trails
-  </h1>
-  <div class="header_menu">
-    <% if current_user.present? && current_user.admin? %>
-      <%= link_to "管理者", rails_admin_path %>
-    <% else %>
+    <nav class="navbar sticky-top">
+      <h1 class="p-3 top_title">
+        <i class="fas fa-subway"></i>
+        Trails
+      </h1>
+      <div class="header_menu">
+      <% if current_user.present? && current_user.admin? %>
+        <%= link_to "管理者", rails_admin_path %>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to "ユーザートップページ", user_path(current_user.id) %>
+        <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+      <% else %>
+        <%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post%>
+        <%= link_to 'ゲストユーザー(一般)', guest_path, method: :post %>
+        <%= link_to "新規作成", new_user_path %>
+        <%= link_to "ログイン", new_session_path %>
+      <% end %>
+    </nav>
+    
+    <% if notice %>
+      <div id="notice" class="notice"><%= notice %></div>
     <% end %>
 
-    <% if logged_in? %>
-      <%= link_to "ユーザートップページ", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to 'ゲストユーザー(管理者)', guest_admin_path, method: :post%>
-      <%= link_to 'ゲストユーザー(一般)', guest_path, method: :post %>
-      <%= link_to "新規作成", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
-    <% end %>
-  </nav>
-  
-  <% if notice %>
-    <div id="notice" class="notice"><%= notice %></div>
-  <% end %>
-
-  <div class="body">
-    <div class="yield">
-      <%= yield %>
+    <div class="body">
+      <div class="yield">
+        <%= yield %>
+      </div>
+      <footer class="footer">
+        <p>©2022 Trails</p>
+      </footer>
     </div>
-  </body>
-
-    <footer class="footer">
-      <p>©2022 Trails</p>
-    </footer>
-  </div>
   </body>
 </html>

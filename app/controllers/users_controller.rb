@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   skip_before_action :login_required, only: [:new, :create]
   before_action :set_unit, only: %i[ create new  edit update]
   before_action :set_user, only: %i[ show edit update destroy ]
@@ -40,18 +41,17 @@ end
   
   private
   
-  def user_params
-    params.require(:user).permit(:name, :email, :position, :password,
-                                  :password_confirmation, :unit_id)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :position, :password,
+                                    :password_confirmation, :unit_id)
+    end
 
-  def set_unit
-    @unit = Unit.all
-  end
+    def set_unit
+      @unit = Unit.all
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
+    def set_user
+      @user = User.find(params[:id])
+    end
   
 end

@@ -2,25 +2,20 @@ class UnitsController < ApplicationController
   before_action :set_unit, only: %i[ show edit update destroy ]
   skip_before_action :login_required, only: [:new, :create]
 
-  # GET /units or /units.json
   def index
     @units = Unit.all
   end
 
-  # GET /units/1 or /units/1.json
   def show
   end
 
-  # GET /units/new
   def new
     @unit = Unit.new
   end
 
-  # GET /units/1/edit
   def edit
   end
 
-  # POST /units or /units.json
   def create
     @unit = Unit.new(unit_params)
 
@@ -35,7 +30,6 @@ class UnitsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /units/1 or /units/1.json
   def update
     respond_to do |format|
       if @unit.update(unit_params)
@@ -48,10 +42,8 @@ class UnitsController < ApplicationController
     end
   end
 
-  # DELETE /units/1 or /units/1.json
   def destroy
     @unit.destroy
-
     respond_to do |format|
       format.html { redirect_to units_url, notice: "所属部署が削除されました." }
       format.json { head :no_content }
@@ -59,12 +51,10 @@ class UnitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_unit
       @unit = Unit.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def unit_params
       params.require(:unit).permit(:name)
     end
