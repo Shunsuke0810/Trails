@@ -9,13 +9,13 @@
 ---
 - お気に入り機能
 - Ajaxを使ったコメント機能
--Geocording API
--Maps JavaScript API
+- Geocording API
+- Maps JavaScript API
 
 ## カリキュラム外の技術
 ---
--Geocording API
--Maps JavaScript API
+- Geocording API
+- Maps JavaScript API
 
 ## 実行手順 
 ---
